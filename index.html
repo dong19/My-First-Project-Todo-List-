@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>ToDoList App</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no,  maximum-scale=1.0, user-scalable=0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href=".\css\styles.css">
+    <link rel="stylesheet" href=".\css\fontawesome\css\all.min.css">
+  </head>
+  <body>
+
+  <!--Navigation Bar-->
+    <div class="container">
+      <div class="button-container">
+        <button class="add-button" id="addButton">+ Add Task</button>
+      </div>
+      <div class="left-container">
+        <button class="cancel" id="mobile-cancel" onclick="closeMobileNav()">
+          <i class="fa fa-window-close fa-2xl" aria-hidden="true"></i>
+        </button>
+        <div class="logo-container">
+          <h1>M<i class="fa-solid fa-list-check"></i></h1>
+          <h1>Task</h1>
+        </div>
+        <div class="navigation-bar">
+          <ul>
+            <li><a href="#" onclick="showAll()"><i class="fas fa-columns"></i>Dashboard</span></a></li>
+            <li><a href="#" onclick="showToday()"><i class="fas fa-calendar-day"></i>Today</span></a></li>
+            <li><a href="#" onclick="showUpcoming()"><i class="fas fa-calendar-alt"></i>Upcoming</span></a></li>
+            <li><a href="#" onclick="showOverdue()"><i class="fas fa-clock"></i>Overdue</a></li>
+            <li><a href="#" onclick="showHistory()"><i class="fas fa-history"></i>History</a></li>
+          </ul> 
+        </div>
+      </div>
+      <div class="right-container">
+        <div type="button" class="mobile-menu-btn" id="menu-btn"><i class="fa-solid fa-bars fa-xl"></i></div>
+        <div class="date-container" id="date-container">
+          <div class="greet" id="greet"></div>
+          <div class="time" id="time"></div>
+          <div class="date" id="date"></div>
+        </div>
+        <div class="tasks-container" id="tasks-container">
+          <div class="notask" id="notask"></div>
+
+        </div>
+      </div>
+    </div>
+
+    <!--Form modal for adding tasks-->
+    <div class="popup" id="popup">
+      <div class="form-close-btn-container">
+        <button class="cancel" id="cancel">
+          <i class="fa fa-window-close fa-2xl" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="form-task-title">
+      </div>
+      <div class="form-container">
+        <form>
+          <div class="form-content">
+            <label for="task-title">Title</label>
+            <input type="text" id="task-title-value" class="taskvalue" autocomplete="off">
+            <span class="error_message" id="error_message_title"></span> 
+          </div>
+          <div class="form-content">
+            <label for="task-date">Date</label>
+            <input type="date" id="task-date" onfocus="disablePastDate()">
+            <span class="error_message" id="error_message_date"></span>
+          </div>
+          <div class="form-content">
+            <label for="task-description">Description</label>
+            <textarea name="Description" id="task-description" rows="10" cols="30"></textarea>
+            <span class="error_message_desc" id="error_message_description"></span>
+          </div>
+          <div class="form-button">
+            <button class="add-task" id="add-task" type="submit">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal for discard option -->
+     <div class="discard-modal-container">
+        <div class="discard-text">Do you want to discard changes?</div>
+        <div class="discard-btn-container">
+          <button type="button" class="discard-cancel-btn" onclick="closeDiscardModal()">Cancel</button>
+          <button type="button" class="discard-btn" onclick="closeModal() ">Discard</button>
+        </div>
+     </div>
+
+    <!--Popup message-->
+    <div class="popup-msg" id="popupMsg"></div>
+
+    <!-- Display sticky note -->
+    <div class="sticky-note">
+      <div class="sticky-btn">
+        <button type="button" class="window-close-btn" id="window-close-btn" onclick="closeModal()">
+          <i class="fa fa-window-close fa-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="sticky-title-header">
+        <div class="task-title" id="display-title"></div>
+        <div class="date-title" id="display-date"></div>
+      </div>
+      <div class="description" id="display-description">
+        
+      </div>
+    </div>
+  </body>
+  <script src=".\script.js"></script>
+</html>

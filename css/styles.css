@@ -1,0 +1,868 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Rubik', sans-serif;
+}
+.container{
+    display: grid;
+    grid-template-columns: 200px auto;
+    width: 100%;
+    height: 100vh;
+    gap: 12px;
+}
+.mobile-menu-btn{
+    visibility: hidden;
+}
+#mobile-cancel{
+    visibility: hidden;
+}
+.left-container{
+    margin-top: 20px;
+    background-color: transparent;
+    width: 210px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.button-container{
+    position: absolute;
+    top: 13%;
+    left: 2%;
+}
+.navigation-bar{
+    flex-basis: 100%;
+}
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 20px; */
+    color: white;
+    margin-bottom: 60px;
+}
+.logo-container h1{
+    padding: 5px;
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding-bottom: 20px;
+}
+.add-button{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #dc5f00;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.add-button:hover{
+    background: linear-gradient(to left, rgb(238, 175, 113), rgb(242, 127, 5), rgba(235, 145, 9, 1));
+}
+.navigation-bar{
+    position: relative;
+    gap: 10px;
+    font-size: 1.2rem;
+    text-align: start;
+}
+ul{
+    list-style-type: none;
+    width: 100%;
+}
+a {
+    text-decoration: none;
+    color: aliceblue;
+    padding: 5px;
+    width: 100%;
+    margin-left: 18px;
+}
+li{
+    margin-bottom: 10px;
+    padding: 5px 5px 5px 10px;
+}
+li:hover{
+    background-color: rgb(163, 160, 153, 0.5);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 5px;
+}
+.right-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 97%;
+    height: 97%;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+.label-container h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 50px;
+}
+.date-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    justify-content: start;
+    align-items: start;
+    font-family: 'Monserrat', sans-serif;
+}
+.date-container::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(240, 226, 242, 0.8), rgba(215, 96, 230, 0.7), rgba(235, 9, 214, 0.8));
+    border-radius: 10px;
+    z-index: -1;
+}
+.date{
+    flex-grow: 1;
+}
+.date, .time, .greet{
+    margin-left: 20px;
+}
+.date-container .time{
+    font-size: 2rem;
+    font-weight: 900;
+}
+.greet{
+    font-size: 2rem;
+    font-weight: 800;
+    margin-top: 20px;
+}
+
+.tasks-container{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: rgba(168, 180, 191, 0.9);
+    flex-grow: 1;
+    border-radius: 10px;
+    height: 400px;
+    overflow: auto;
+}
+/* Styling for dashboard */
+.dashboard-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    width: 100%;
+}
+.active-container, .completed-container{
+    width: 20%;
+    height: 15vh;
+    flex-grow: 1;
+    content: "";
+    border-radius: 5px;
+    border: 1px solid white;
+}
+.active-container{
+    background-color: #dc5f00;
+}
+.completed-container{
+    background-color: #22f102;
+}
+.active-container, .completed-container{
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    font-size: 1.4rem;
+}
+.overdue-container{
+    content: "";
+    width: 100%;
+    height: 48vh;
+    background-color: #086fec;
+    flex-grow: 1;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 20px;
+}
+.overdue-header{
+    width: 100%;
+    display: flex;
+    gap: 25px;
+    
+}
+.overdue-list-container{
+    background-color: rgba(215, 227, 239, 0.9);
+    width: 100%;
+    height: 36vh;
+    margin-top: 10px;
+    overflow: auto;
+    color: red;
+    border-radius: 5px;
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+/* Style for task list container */
+.tasklist-container, .dashboard-tasklist-container{
+    display: flex;
+    width: 100%;
+    height: 45px;
+    background-color: rgba(168, 180, 191, 0.9);
+    border: 1px solid rgba(150, 149, 149, 0.6);
+    padding: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    font-family: 'Rubik', sans-serif;
+}
+.tasklist-container:hover, .dashboard-tasklist-container:hover{
+    cursor: pointer;
+    background-color: rgba(219, 214, 214, 0.6);
+    font-weight: bold;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    white-space: nowrap; 
+    overflow: hidden;
+}
+.tasklist-data{
+    width: 100%;
+}
+.tasklist-data:nth-child(1){
+    width: 20%;
+}
+.tasklist-data:nth-child(2){
+    width: 65%;
+}
+.tasklist-data:nth-child(3){
+    width: 15%;
+}
+.task-date-list{
+    text-align: right;
+}
+.button-icon-container{
+    display: flex;
+    gap: 20px;
+    position: absolute; 
+    left: 87dvw;
+}
+.icon-button{
+    display: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    color: rgb(61, 61, 61);
+}
+.icon-button:hover{
+    border-radius: 10px;
+    background-color: rgba(123, 123, 123, 0.3);
+    cursor: pointer;
+}
+.tasklist-container:hover .icon-button{
+    display: inline-block;
+}
+.tasklist-container:hover .tasklist-data:nth-child(3){
+    visibility: hidden;
+}
+
+/* Tooltip styling */
+.tooltip-edit, .tooltip-delete, .tooltip-done{
+    position: absolute;
+    transform: translate(-20%, 95%);
+    visibility: hidden;
+    opacity: 0;
+    background-color: rgba(64, 64, 64, 0.9);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    transition: opacity 0.5s ease-in-out;
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.7rem;
+}
+.button-icon-container > button:hover .tooltip-edit{
+    opacity: 1;
+    visibility: visible;
+    font-size: 0.6rem;
+}
+.button-icon-container > button:hover .tooltip-delete{
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-30%, 95%);
+    font-size: 0.6rem;
+}
+.button-icon-container > button:hover .tooltip-done{
+    opacity: 1;
+    visibility: visible;
+    width: 70px;
+    font-size: 0.6rem;
+    transform: translate(-45%, 95%);
+}
+.red{
+    color: red;
+}
+.disabled{
+    opacity: 0.5;
+}
+.disabled:hover{
+    cursor: not-allowed;
+}
+
+
+/* Style for sticky note */
+.sticky-note{
+    position: absolute;
+    top: 0;
+    left: 40%;
+    transform: scale(0);
+    width: 500px;
+    height: 400px;
+    background-color: #dfe29b;
+    border-radius: 5px;
+    visibility: hidden;
+    transition: transform 0.3s, top ease-in-out 0.3s;
+    z-index: 3;
+}
+.show-data-modal{
+    transform: scale(1);
+    top: 20%;
+    visibility: visible;
+}
+.blur{
+    background-color: rgba(150, 149, 149, 0.6);
+    filter: blur(1px);
+    pointer-events: none;
+}
+.sticky-title-header{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px 10px 20px;
+}
+.task-title{
+    font-weight: bolder;
+    font-size: 1.5rem;
+    width: 50%;
+}.date-title{
+    font-style: italic;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 50%;
+    text-align: right;
+}
+.description{
+    display: block;
+    text-align: left;
+    font-size: 1rem;
+    padding: 15px 20px 10px 20px;
+    width: 100%;
+    height: auto;
+    /* overflow-wrap: break-word; */
+    white-space: pre-wrap;
+}
+.sticky-btn{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    background-color: rgb(249, 232, 82);
+    gap: 5px;
+    padding: 7px;
+}
+.window-close-btn{
+    border: none;
+    background-color: transparent;
+}
+.fa-window-close:hover{
+    color: #f10c0c;
+}
+
+/* Fontawesome icons */
+.fa-columns, .fa-calendar-day, .fa-calendar-alt, .fa-clock, .fa-history{
+    margin-right: 15px;
+} 
+.fa-window-close{
+    color: #003C43;
+}
+.fa-list-check{
+    color: #f0610f;
+    margin-left: 2px;
+}
+.count {
+    color: #f0610f;
+    padding: 3px;
+    width: 300px;
+    height: 300px;
+    margin-left: 5px;
+    font-size: 15px;
+}
+.today{
+    margin-left: 50px;
+}
+.upcoming{
+    margin-left: 10px;
+}
+.overdue{
+    margin-left: 25px;
+}
+.error{
+    border: 1px solid red;
+}
+
+/* CSS for Modal */
+.popup{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    background-color: rgb(183, 193, 201);
+    border: 0.1px solid rgba(56, 56, 56, 0.4);
+    width: 500px;
+    border-radius: 5px;
+    visibility: hidden;
+    transition: transform 0.3s, top 0.3s;
+    z-index: 3;
+}
+.form-task-title{
+    padding: 10px 20px 5px;
+}
+.form-container{
+    padding: 0 25px 25px
+}
+.show-modal{
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    visibility: visible;
+}
+.form-content{
+    font-size: 20px;
+    margin: 5px;
+}
+.form-content input, .form-content label{
+    margin-bottom: 4px;
+}
+.form-content input[type="date"]{
+    text-indent: 5px;
+}
+.form-content input{
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    text-indent: 10px;
+    font-family: 'Rubik', sans-serif;
+}
+.form-content textarea{
+    width: 100%;
+    border-radius: 10px;
+    resize: none;
+    padding: 10px;
+    font-family: 'Rubik', sans-serif;
+    text-indent: none;
+}
+.popup h2{
+    padding: 8px;
+}
+.form-content label, h2{
+    display: block;
+    margin-bottom: 3px;
+}
+.form-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-button button{
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgb(220, 95, 0);
+    font-size: 1rem;
+    font-weight: 500;
+}
+.error_message{
+    color: rgb(160, 2, 2);
+    font-size: 15px;
+    font-style: italic;
+    margin-left: 70%;
+}
+.error_message_desc{
+    display: flex;
+    color: rgb(160, 2, 2);
+    font-size: 15px;
+    font-style: italic;
+    margin-left: 3%;
+    
+}
+.form-close-btn-container{
+    display: flex;
+    justify-content: end;
+    padding: 10px 20px 10px;
+    background-color: rgb(220, 95, 0);
+    border-radius: 5px 5px 0 0;
+}
+.cancel{
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: none;
+}
+.cancel > .fa-window-close{
+    color: rgb(185, 184, 184);
+}
+.cancel:hover .fa-window-close{
+    color: red;
+}
+
+/* Styling for discard option modal */
+.discard-modal-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0%;
+    left: 45%;
+    transform: translate(-3%, 20%) scale(0.1);
+    visibility: hidden;
+    transition: transform 0.5s;
+    background-color: rgb(183, 193, 201);
+    border-top: 5px solid #dc5f00;
+    border-radius: 5px;
+    width: 200px;
+    height: 100px;
+    z-index: 4;
+}
+.show-discard-modal{
+    transform: translate(-3%, 20%) scale(1);
+    visibility: visible;
+}
+.discard-text{
+    margin-top: 5px;
+}
+.discard-btn-container{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+}
+.discard-btn-container > button{
+    background-color: #dc5f00;
+    padding: 5px;
+    width: 40%;
+}
+
+/**Styling for popup message**/
+.popup-msg{
+    position: absolute;
+    display: flex;
+    width: auto;
+    height: 10%;
+    background-color: rgba(54, 231, 31, 0.7);
+    top: 6%;
+    left: 80%;
+    content: '';
+    border-radius: 10px;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    font-size: 1rem;
+    text-align: center;
+}
+.visible-success{
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+.visible-delete{
+    background-color: rgba(141, 4, 4, 0.7);
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+.fade-out{
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+/* Styling for mobile devices */
+
+@media screen and (width < 600px) {
+    html{
+        width: 100dvw;
+        height: 100dvh;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    .container{
+        width: 100vw;
+        height: 100vh;
+    }
+    .left-container{
+        position: absolute;
+        background-color: rgba(28, 22, 72, 0.8);
+        width: 230px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+        gap: 0;
+        left: -80%;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease-in-out;
+        z-index: 1;
+    }
+    .show-nav{
+        opacity: 1;
+        left: 0;
+        visibility: visible;
+    }
+    .button-container{
+        display: block;
+        position: fixed;
+        top: 86%;
+        left: 60%;
+        z-index: 1;
+    }
+    .right-container{
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        margin-top: 0;
+    }
+    .date-container{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 130px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Monserrat', sans-serif;
+    }
+    .date-container::before{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(240, 226, 242, 0.8), rgba(215, 96, 230, 0.7), rgba(235, 9, 214, 0.8));
+        border-radius: 1px;
+        z-index: -1;
+    }
+    .greet{
+        font-size: 1.9rem;
+        font-weight: 800;
+        margin-top: 15px;
+    }
+    .date{
+        padding-bottom: 10px;
+    }
+    .tasks-container{
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(168, 180, 191, 0.9);
+        flex-grow: 1;
+        border-radius: 1px;
+        height: auto;
+        overflow: auto;
+        overflow-x: hidden;
+        width: 100%;
+        height: 100%;
+    }
+    .tasklist-container, .dashboard-tasklist-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: 
+            "item-1 item-2"
+            "item-3 item-3"; 
+        width: 100%;
+        height: 10%;
+        background-color: rgba(168, 180, 191, 0.9);
+        border: 1px solid rgba(150, 149, 149, 0.6);
+        padding: 8px;
+        font-size: 1rem;
+        border-radius: 5px;
+        font-family: 'Rubik', sans-serif;
+    }
+    .tasklist-data:nth-child(1){
+         grid-area: item-1;
+         font-weight: bold;
+         width: 100%;
+    }
+    .tasklist-data:nth-child(2){
+        grid-area: item-3;
+        width: calc(100%);
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .tasklist-data:nth-child(3){
+        grid-area: item-2;
+        justify-self: end;
+        width: 100%;
+        font-weight: bold;
+    }
+    .dashboard-tasklist-container{
+        font-size: 0.7rem;
+        height: 23%;
+    }
+    .mobile-menu-btn{
+        visibility: visible;
+        position: absolute;
+        display: flex;
+        top: 4%;
+        left: 5%;
+        z-index: 4;
+    }
+    .add-button{
+        width: 110px;
+        height: 40px;
+        border-radius: 10px;
+        background-color: #dc5f00;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: black;
+    }
+    .add-task{
+        color: black;
+    }
+    .logo-container{
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-right: 23px;
+        
+    }
+    #mobile-cancel{
+        padding: 15px;
+        margin-left: 75%;
+        visibility: visible;
+    }
+    .dashboard-container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .active-container, .completed-container{
+        display: flex;
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        font-size: 1rem;
+        width: inherit;
+    }
+    .popup{
+        width: 95%;
+        
+    }
+    .sticky-note{
+        left: 2%;
+        width: 96vw;
+        height: 400px;   
+    }
+    .error_message{
+        font-size: 13px;
+        margin-left: 63%;
+    }
+    .error_message_desc{
+        font-size: 11px;
+        margin-left: 3%;
+    }
+    .popup-msg{
+        background-color: #22f102;
+        width: auto;
+        height: 8%;
+        top: 15%;
+        left: 25%;
+        padding: 5px;
+        font-size: 0.8rem;
+    }
+    .visible-success{
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+    .visible-delete{
+        background-color: rgba(141, 4, 4, 1);
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+    .fade-out{
+        opacity: 0;
+        transition: opacity 0.5s ease-out;
+    }
+    .button-icon-container{
+        display: none;
+        position: fixed;
+        bottom: 0; 
+        left: 0;
+        width: 100vw;
+        height: 5vh;
+        background-color: #0a0d32;
+    }
+    .tasklist-container:hover .button-icon-container{
+        display: flex;
+        justify-content: space-around;
+        gap: 10%;
+    }
+    .button-icon-container button{
+        color: rgb(182, 178, 178);
+        margin-right: 0;
+        font-size: 1.1rem;
+    }
+    .discard-modal-container{
+        top: 0%;
+        left: 25vw;
+        width: 200px;
+        height: 100px;
+    }
+    .show-discard-modal{
+        transform: translate(-3%, 10%) scale(1);
+        visibility: visible;
+    }
+    .form-content{
+        font-size: 1rem;
+        margin: 5px;
+    }
+    .form-content input, .form-content textarea{
+        font-size: 1rem;
+        width: 80vw;
+    }
+    .form-content input[type="date"]::-webkit-date-and-time-value{
+       text-align: left;
+    }
+}
