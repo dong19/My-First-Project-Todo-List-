@@ -93,12 +93,12 @@ const saveData = () => {
 }
 
 //Filter tasks
-const showAll = () => {
+const showDashboard = () => {
 
     const active = taskData.filter(tasks => tasks.status === "ongoing");
     const completed = taskData.filter(tasks => tasks.status === "done");
     const date = new Date();
-    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate()}`;
+    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
     const overdue = taskData.filter(tasks => tasks.date < formattedDate);
 
     taskContainer.innerHTML = ` <div class="dashboard-container">
@@ -145,7 +145,7 @@ const showAll = () => {
 const showUpcoming = () => {
     taskContainer.innerHTML = "";
     const date = new Date();
-    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate()}`;
+    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
     const upcomingTasks = taskData.filter(tasks => tasks.date > formattedDate);
 
     if(upcomingTasks.length === 0){
@@ -159,7 +159,7 @@ const showUpcoming = () => {
 const showToday = () => {
     taskContainer.innerHTML = "";
     const date = new Date();
-    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate()}`;
+    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
     const todayTasks = taskData.filter(tasks => tasks.date === formattedDate && tasks.status === "ongoing");
     
     if(todayTasks.length === 0){
@@ -167,30 +167,32 @@ const showToday = () => {
     }else{
         displayData(todayTasks);
     }
+    console.log(formattedDate);
     closeMobileNav();
 }
 
 const showOverdue = () => {
     taskContainer.innerHTML = "";
     const date = new Date();
-    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate()}`;
+    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`;
     const overdueTasks = taskData.filter(tasks => tasks.date < formattedDate);
 
     if(overdueTasks.length === 0){
         taskContainer.innerHTML = `<h2>No Overdue Tasks</h2>`;
     }else{
         displayData(overdueTasks);
+        overdueTasks.forEach(tasks => {
+            if(tasks.date < formattedDate){
+                tasks.status = "overdue";
+                document.getElementById(tasks.id).classList.add("red");
+                document.querySelector(`#${tasks.id}-edit`).classList.add("disabled");
+                document.querySelector(`#${tasks.id}-edit`).disabled = true;
+                document.querySelector(`#${tasks.id}-done`).classList.add("disabled");
+                document.querySelector(`#${tasks.id}-done`).disabled = true;
+            }
+        });
     }
-    
-    overdueTasks.forEach(tasks => {
-        if(tasks.date < formattedDate){
-            document.getElementById(tasks.id).classList.add("red");
-            document.querySelector(`#${tasks.id}-edit`).classList.add("disabled");
-            document.querySelector(`#${tasks.id}-edit`).disabled = true;
-            document.querySelector(`#${tasks.id}-done`).classList.add("disabled");
-            document.querySelector(`#${tasks.id}-done`).disabled = true;
-        }
-    });
+    console.log(overdueTasks);
     closeMobileNav();
 }
 
@@ -409,7 +411,7 @@ const closeMobileNav = () => {
 }
 
 if(taskData.length){
-    showAll();
+    showDashboard();
     showToday();
     showUpcoming();
     showOverdue();
@@ -420,7 +422,7 @@ if(taskData.length){
 formatDate();
 formatTime();
 Greetings();
-disablePastDate();
+// disablePastDate();
 
 addButton.addEventListener("click", () => {
     showModal();
