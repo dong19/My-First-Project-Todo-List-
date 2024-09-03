@@ -95,7 +95,6 @@ li:hover{
     background-color: rgb(163, 160, 153, 0.5);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    padding: 5px;
 }
 .right-container{
     display: flex;
@@ -274,9 +273,9 @@ li:hover{
 }
 .button-icon-container{
     display: flex;
-    gap: 20px;
-    position: absolute; 
-    left: 87dvw;
+    position: absolute;
+    gap: 15px;
+    right: 4%;
 }
 .icon-button{
     display: none;
@@ -311,6 +310,7 @@ li:hover{
     transition: opacity 0.5s ease-in-out;
     font-family: 'Rubik', sans-serif;
     font-size: 0.7rem;
+    
 }
 .button-icon-container > button:hover .tooltip-edit{
     opacity: 1;
@@ -833,6 +833,7 @@ li:hover{
         width: 100vw;
         height: 5vh;
         background-color: #0a0d32;
+        padding: 3px;
     }
     .tasklist-container:hover .button-icon-container{
         display: flex;
@@ -842,7 +843,7 @@ li:hover{
     .button-icon-container button{
         color: rgb(182, 178, 178);
         margin-right: 0;
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
     .discard-modal-container{
         top: 0%;
@@ -864,5 +865,279 @@ li:hover{
     }
     .form-content input[type="date"]::-webkit-date-and-time-value{
        text-align: left;
+    }
+}
+
+@media screen and (width > 600px) and (width < 1280px) {
+    html{
+        width: 100dvw;
+        height: 100dvh;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    .container{
+        width: 100vw;
+        height: 100vh;
+    }
+    .left-container{
+        position: absolute;
+        background-color: rgba(28, 22, 72, 0.8);
+        width: 300px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+        gap: 0;
+        left: -80%;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease-in-out;
+        z-index: 1;
+    }
+    .show-nav{
+        opacity: 1;
+        left: 0;
+        visibility: visible;
+    }
+    .navigation-bar{
+        font-size: 1.9rem;
+        margin-left: 10px;
+    }
+    .logo-container{
+        margin-top: 10px;
+        margin-bottom: 20px;
+        margin-right: 23px;
+        font-size: 1.4rem;
+    }
+    .button-container{
+        display: block;
+        position: fixed;
+        top: 84%;
+        left: 75%;
+        z-index: 1;
+    }
+    .right-container{
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        margin-top: 0;
+    }
+    .date-container{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 135px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Monserrat', sans-serif;
+    }
+    .date-container::before{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(240, 226, 242, 0.8), rgba(215, 96, 230, 0.7), rgba(235, 9, 214, 0.8));
+        border-radius: 1px;
+        z-index: -1;
+    }
+    .greet{
+        font-size: 2rem;
+        font-weight: 800;
+        margin-top: 15px;
+    }
+    .date{
+        padding-bottom: 10px;
+        font-size: 1.3rem;
+    }
+    .time{
+        font-size: 1.5rem;
+    }
+    .tasks-container{
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(168, 180, 191, 0.9);
+        flex-grow: 1;
+        border-radius: 1px;
+        height: auto;
+        overflow: auto;
+        overflow-x: hidden;
+        width: 100%;
+        height: 100%;
+    }
+    .tasklist-container, .dashboard-tasklist-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: 
+            "item-1 item-2"
+            "item-3 item-3"; 
+        width: 100%;
+        height: 10%;
+        background-color: rgba(168, 180, 191, 0.9);
+        border: 1px solid rgba(150, 149, 149, 0.6);
+        padding: 8px;
+        font-size: 1.3rem;
+        border-radius: 5px;
+        font-family: 'Rubik', sans-serif;
+    }
+    .tasklist-data:nth-child(1){
+         grid-area: item-1;
+         font-weight: bold;
+         width: 100%;
+    }
+    .tasklist-data:nth-child(2){
+        grid-area: item-3;
+        width: calc(100%);
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .tasklist-data:nth-child(3){
+        grid-area: item-2;
+        justify-self: end;
+        width: 100%;
+        font-weight: bold;
+    }
+    .dashboard-tasklist-container{
+        font-size: 0.9rem;
+        height: 23%;
+    }
+    .mobile-menu-btn{
+        visibility: visible;
+        position: absolute;
+        display: flex;
+        top: 4%;
+        left: 5%;
+        z-index: 4;
+        font-size: x-large;
+    }
+    .add-button{
+        width: 134px;
+        height: 55px;
+        border-radius: 10px;
+        background-color: #dc5f00;
+        font-size: 1.3em;
+        font-weight: 500;
+        color: black;
+    }
+    .add-task{
+        color: black;
+    }
+    #mobile-cancel{
+        padding: 20px;
+        margin-left: 78%;
+        visibility: visible;
+    }
+    .dashboard-container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .active-container, .completed-container{
+        display: flex;
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        font-size: 1.5rem;
+        width: inherit;
+    }
+    .sticky-note{
+        left: 7.5%;
+        width: 85%;
+        height: 400px;   
+    }
+    .sticky-btn button{
+        font-size: x-large;
+    }
+    .task-title{
+        font-weight: bolder;
+        font-size: 1.5rem;
+    }.date-title{
+        font-style: italic;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+    .description{
+        font-size: 1.1rem;
+    }
+    .error_message{
+        font-size: 13px;
+        margin-left: 63%;
+    }
+    .error_message_desc{
+        font-size: 11px;
+        margin-left: 3%;
+    }
+    .popup-msg{
+        background-color: #22f102;
+        width: auto;
+        height: 8%;
+        top: 15%;
+        left: 25%;
+        padding: 5px;
+        font-size: 0.8rem;
+    }
+    .visible-success{
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+    .visible-delete{
+        background-color: rgba(141, 4, 4, 1);
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+    .fade-out{
+        opacity: 0;
+        transition: opacity 0.5s ease-out;
+    }
+    .button-icon-container{
+        display: none;
+        position: fixed;
+        bottom: 0; 
+        left: 0;
+        width: 100vw;
+        height: 5vh;
+        background-color: #0a0d32;
+        padding: 10px;
+    }
+    .tasklist-container:hover .button-icon-container{
+        display: flex;
+        justify-content: space-around;
+        gap: 10%;
+    }
+    .button-icon-container button{
+        color: rgb(182, 178, 178);
+        margin-right: 0;
+        font-size: 1.3rem;
+    }
+    .discard-modal-container{
+        top: 0;
+        left: 50%;
+        width: 200px;
+        height: 100px;
+    }
+    .show-discard-modal{
+        transform: translate(-50%, 130%) scale(1);
+        visibility: visible;
+    }
+    .popup{
+        width: 80vw; 
+    }
+    .form-content{
+        font-size: 1.2rem;
+        margin: 5px;
+    }
+    .form-content input, .form-content textarea{
+        font-size: 1.1rem;
+        width: 100%
+    }
+    .form-content input[type="date"]::-webkit-date-and-time-value{
+       text-align: left;
+    }
+    .form-button button{
+        font-size: 1.2rem;
     }
 }
